@@ -1,12 +1,13 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const StateContext = createContext();
 
 export const WeatherContextProvider = ({ children }) => {
   const [weather, setWeather] = useState({});
   const [values, setValues] = useState([]);
-  const [place, setPlace] = useState("Enugu");
+  const [place, setPlace] = useState("Enugu,Nigeria");
   const [thisLocation, setLocation] = useState("");
 
   // fetch api
@@ -22,7 +23,7 @@ export const WeatherContextProvider = ({ children }) => {
         shortColumnNames: 0,
       },
       headers: {
-        "X-RapidAPI-Key": import.meta.env.API_KEY,
+        "X-RapidAPI-Key": "0b025d2537msh80c1f91c6260e47p1be4eejsn7c49c199c834",
         "X-RapidAPI-Host": "visual-crossing-weather.p.rapidapi.com",
       },
     };
@@ -37,7 +38,11 @@ export const WeatherContextProvider = ({ children }) => {
     } catch (e) {
       console.error(e);
       // if the api throws error.
-      toast.error("This place does not exist");
+      if (e.response) {
+        toast.error(e.response.data.message);
+      } else {
+        toast.error(e.message);
+      }
     }
   };
 
