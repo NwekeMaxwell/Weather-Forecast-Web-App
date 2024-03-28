@@ -10,6 +10,9 @@
   box-sizing: border-box;
 }
 
+.gradient{
+  background: linear-gradient(to right, #2E3192, #1BFFFF);
+}
 .glassCard{
   background:  rgba(225,225,225,0.18);
   box-shadow:  0 8px 32px 0 rgba(31,38,135,0.37);
