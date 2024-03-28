@@ -7,12 +7,13 @@ import rain from "../assets/icons/rain.png";
 import snow from "../assets/icons/snow.png";
 import storm from "../assets/icons/storm.png";
 import wind from "../assets/icons/windy.png";
+import overcast from "../assets/icons/overcast.png";
 
 const MiniCard = ({ time, temp, iconString }) => {
   const [icon, setIcon] = useState();
 
   useEffect(() => {
-    if (iconString) {
+      console.log("icon string", iconString);
       if (iconString.toLowerCase().includes("cloud")) {
         setIcon(cloud);
       } else if (iconString.toLowerCase().includes("rain")) {
@@ -27,11 +28,13 @@ const MiniCard = ({ time, temp, iconString }) => {
         setIcon(snow);
       } else if (iconString.toLowerCase().includes("wind")) {
         setIcon(wind);
+      } else if (iconString.toLowerCase().includes("overcast")) {
+        setIcon(overcast);
       }
     }
   }, [iconString]);
   return (
-    <div className="glassCard w-[10rem] h-[10rem] p-4 flex flex-col">
+    <div className="glassCard w-[10rem] h-[11rem] p-4 flex flex-col hover:scale-110 transition-all duration-500">
       <p className="text-center">
         {
           new Date(time)
@@ -39,15 +42,16 @@ const MiniCard = ({ time, temp, iconString }) => {
             .split(" ")[0]
         }
       </p>
-      <hr />
+      <hr className="pb-1" />
       <div className="w-full flex justify-center items-center flex-1 ">
         <img
           src={icon}
           alt="forecast not available"
-          className="w-[4rem] h-[4rem] text-xs"
+          className="w-[4rem] h-[4rem] text-xs rounded-full"
         />
       </div>
       <p className="text-center font-bold">{temp}&deg;C</p>
+      <p className="text-center font-bold text-sm">{iconString}</p>
     </div>
   );
 };
