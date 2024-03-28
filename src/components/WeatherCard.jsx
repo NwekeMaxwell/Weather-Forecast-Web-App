@@ -9,6 +9,7 @@ import storm from "../assets/icons/storm.png";
 import wind from "../assets/icons/windy.png";
 import "../index.css";
 import { useDate } from "../lib/utils/useDate";
+import BackgroundLayout from "./Background";
 
 const WeatherCard = ({
   temperature,
@@ -43,15 +44,16 @@ const WeatherCard = ({
   }, [iconString]);
 
   return (
-    <div className="w-[22rem] min-w-[22rem] h-[30rem] glassCard p-4">
-      <div className="flex w-full just-center, items-center gap-4 mt-12 mb-4">
+    <div className="max-w-[22rem] w-[90vw] glassCard p-4 rounded-lg md:hover:scale-105 transition-all duration-500">
+      <BackgroundLayout></BackgroundLayout>
+      <div className="flex w-full just-center items-center gap-4 mt-8 mb-4 glassCard">
         <img src={icon} alt="weather_icon" />
         <p className="font-bold text-5xl flex justify-center items-center">
           {temperature} &deg;C
         </p>
       </div>
       <div className="font-bold text-center text-xl">{place}</div>
-      <div className="w-full flex justify-between items-center mt-4">
+      <div className="w-full flex justify-between items-center mt-4 glassCard">
         <p className="flex-1 text-center p-2">{new Date().toDateString()}</p>
         <p className="flex-1 text-center p-2">{time}</p>
       </div>
@@ -68,7 +70,7 @@ const WeatherCard = ({
         <p className="text-lg">{heatIndex ? heatIndex : "N/A"}</p>
       </div>
       <hr className="bg-slate-600" />
-      <div className="w-full p-4 flex justify-center items-center text-3xl font-semibold">
+      <div className="glassCard w-full mt-1 p-4 flex justify-center items-center text-3xl font-semibold">
         {conditions}
       </div>
     </div>
