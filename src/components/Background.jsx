@@ -7,6 +7,7 @@ import Cloudy from "../assets/images/Cloudy.jpg";
 import Rainy from "../assets/images/Rainy.jpg";
 import Snow from "../assets/images/snow.jpg";
 import Stormy from "../assets/images/Stormy.jpg";
+import overcast from "../assets/images/overcast.jpg";
 import Sunny from "../assets/images/Sunny.jpg";
 
 const BackgroundLayout = () => {
@@ -27,6 +28,8 @@ const BackgroundLayout = () => {
         setImage(Rainy);
       } else if (imageString.toLowerCase().includes("snow")) {
         setImage(Snow);
+      }else if (imageString.toLowerCase().includes("overcast")){
+        setImage(overcast);
       } else if (imageString.toLowerCase().includes("fog")) {
         setImage(Fog);
       } else if (
