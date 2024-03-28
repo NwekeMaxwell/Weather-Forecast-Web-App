@@ -11,7 +11,7 @@ export const WeatherContextProvider = ({ children }) => {
   const [thisLocation, setLocation] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // fetch api
+  // fetch weather information from rapid apis visual crossing weather api
   const fetchWeather = async () => {
     const options = {
       method: "GET",
@@ -32,9 +32,8 @@ export const WeatherContextProvider = ({ children }) => {
     try {
       setLoading(true);
       const response = await axios.request(options);
-      console.log(response.data);
+      // console.log(response.data);
       const thisData = Object.values(response.data.locations)[0];
-      console.log("thisData", thisData);
       setLocation(thisData.address);
       setValues(thisData.values);
       setWeather(thisData.values[0]);
@@ -55,16 +54,18 @@ export const WeatherContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    //fetch weather information each time the places string is updated
     fetchWeather();
   }, [place]);
 
-  useEffect(() => {
-    console.log("values", values);
-    console.log("weather", weather);
-    console.log("place", place);
-    console.log("location", thisLocation);
-  }, [values, weather, place, thisLocation]);
+  // useEffect(() => {
+  //   console.log("values", values);
+  //   console.log("weather", weather);
+  //   console.log("place", place);
+  //   console.log("location", thisLocation);
+  // }, [values, weather, place, thisLocation]);
 
+  //wrap the app with the context provider to get access to the weather information on every page
   return (
     <StateContext.Provider
       value={{
