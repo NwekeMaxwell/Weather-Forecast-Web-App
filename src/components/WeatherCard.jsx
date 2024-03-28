@@ -23,6 +23,7 @@ const WeatherCard = ({
   const [icon, setIcon] = useState(sun);
   const { time } = useDate();
 
+  // update the weather card information relative to the weather information fetched
   useEffect(() => {
     if (iconString) {
       if (iconString.toLowerCase().includes("cloud")) {

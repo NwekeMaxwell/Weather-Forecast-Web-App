@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+//date utitility function for custom date and time formatting
 export const useDate = () => {
     const locale = 'en';
     const [today, setDate] = useState(new Date())

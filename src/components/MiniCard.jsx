@@ -12,6 +12,7 @@ import overcast from "../assets/icons/overcast.png";
 const MiniCard = ({ time, temp, iconString }) => {
   const [icon, setIcon] = useState();
 
+  //update mini card icon respective to the icon string received
   useEffect(() => {
     if (iconString) {
       if (iconString.toLowerCase().includes("cloud")) {

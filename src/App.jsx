@@ -3,6 +3,7 @@ import { useWeatherContext } from "./lib/contexts/weatherContext";
 import WeatherCard from "./components/WeatherCard";
 import MiniCard from "./components/MiniCard";
 import Search from "./components/search";
+import Footer from "./components/Footer";
 
 function App() {
   const { weather, thisLocation, values } =
@@ -44,16 +45,7 @@ function App() {
           </div>
         </main>
       </div>
-      <footer className="pt-4 pb-2 px-2 text-center bg-blue-900 text-white w-full">
-        Copyright &copy; 2024{" "}
-        <a
-          href="https://github.com/NwekeMaxwell"
-          className="underline cursor-pointer font-bold"
-        >
-          Nweke Maxwell
-        </a>
-        . All rights reserved
-      </footer>
+     <Footer/>
     </>
   );
 }

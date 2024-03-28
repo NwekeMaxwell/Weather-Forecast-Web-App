@@ -9,11 +9,6 @@ const Search = () => {
   const [options, setoptions] = useState([]);
   const { setPlace, loading } = useWeatherContext();
 
-  const submitCity = () => {
-    // console.log(input);
-    setPlace(search);
-    setSearch("");
-  };
   //fetch cities function utilizing rapid api GeoDB cities API
   const fetchOptions = async () => {
     const options = {
@@ -34,6 +29,12 @@ const Search = () => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  // function to update the location/place state and trigger fetch weather function
+  const submitCity = () => {
+    setPlace(search);
+    setSearch("");
   };
 
   useEffect(() => {

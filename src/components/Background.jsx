@@ -14,6 +14,7 @@ const BackgroundLayout = () => {
   const { weather } = useWeatherContext();
   const [image, setImage] = useState(Clear);
 
+// update the background image according to weather condition
   useEffect(() => {
     if (weather.conditions) {
       let imageString = weather.conditions;
@@ -28,8 +29,10 @@ const BackgroundLayout = () => {
         setImage(Rainy);
       } else if (imageString.toLowerCase().includes("snow")) {
         setImage(Snow);
-      }else if (imageString.toLowerCase().includes("overcast")){
+      } else if (imageString.toLowerCase().includes("overcast")) {
         setImage(overcast);
+      } else if (imageString.toLowerCase().includes("sun")) {
+        setImage(Sunny);
       } else if (imageString.toLowerCase().includes("fog")) {
         setImage(Fog);
       } else if (
