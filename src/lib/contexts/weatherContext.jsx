@@ -9,6 +9,7 @@ export const WeatherContextProvider = ({ children }) => {
   const [values, setValues] = useState([]);
   const [place, setPlace] = useState("Enugu,Nigeria");
   const [thisLocation, setLocation] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // fetch api
   const fetchWeather = async () => {
@@ -29,17 +30,24 @@ export const WeatherContextProvider = ({ children }) => {
     };
 
     try {
+      setLoading(true);
       const response = await axios.request(options);
       console.log(response.data);
       const thisData = Object.values(response.data.locations)[0];
+      console.log("thisData", thisData);
       setLocation(thisData.address);
       setValues(thisData.values);
       setWeather(thisData.values[0]);
+      setLoading(false);
     } catch (e) {
+      setLoading(false);
       console.error(e);
       // if the api throws error.
-      if (e.response) {
-        toast.error(e.response.data.message);
+      if (
+        e.response.data ===
+        "Bad API Request:No rows were returned. Please verify the location and dates requested"
+      ) {
+        toast.error("This city does not exist!");
       } else {
         toast.error(e.message);
       }
@@ -51,8 +59,11 @@ export const WeatherContextProvider = ({ children }) => {
   }, [place]);
 
   useEffect(() => {
-    console.log(values);
-  }, [values]);
+    console.log("values", values);
+    console.log("weather", weather);
+    console.log("place", place);
+    console.log("location", thisLocation);
+  }, [values, weather, place, thisLocation]);
 
   return (
     <StateContext.Provider
@@ -62,6 +73,7 @@ export const WeatherContextProvider = ({ children }) => {
         values,
         thisLocation,
         place,
+        loading,
       }}
     >
       {children}
