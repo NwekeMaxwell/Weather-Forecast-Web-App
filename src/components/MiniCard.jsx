@@ -13,7 +13,7 @@ const MiniCard = ({ time, temp, iconString }) => {
   const [icon, setIcon] = useState();
 
   useEffect(() => {
-      console.log("icon string", iconString);
+    if (iconString) {
       if (iconString.toLowerCase().includes("cloud")) {
         setIcon(cloud);
       } else if (iconString.toLowerCase().includes("rain")) {
