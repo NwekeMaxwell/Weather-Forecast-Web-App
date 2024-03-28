@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useWeatherContext } from "../lib/contexts/weatherContext";
 import { LoaderIcon } from "react-hot-toast";
 import searchIcon from "../assets/icons/search.svg";

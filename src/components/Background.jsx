@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useWeatherContext } from "../lib/contexts/weatherContext";
 //images
 import Clear from "../assets/images/Clear.jpg";
