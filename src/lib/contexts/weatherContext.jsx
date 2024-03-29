@@ -25,7 +25,7 @@ export const WeatherContextProvider = ({ children }) => {
         shortColumnNames: 0,
       },
       headers: {
-        "X-RapidAPI-Key": "0b025d2537msh80c1f91c6260e47p1be4eejsn7c49c199c834",
+        "X-RapidAPI-Key": '87f77d19aamshd2e487c314d7598p1bba3fjsn9f27dd99e0dc',
         "X-RapidAPI-Host": "visual-crossing-weather.p.rapidapi.com",
       },
     };

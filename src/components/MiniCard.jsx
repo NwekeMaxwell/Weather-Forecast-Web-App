@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import sun from "../assets/icons/sun.png";
 import cloud from "../assets/icons/cloud.png";
 import fog from "../assets/icons/fog.png";
@@ -35,7 +35,10 @@ const MiniCard = ({ time, temp, iconString }) => {
     }
   }, [iconString]);
   return (
-    <div className="glassCard w-[10rem] h-[11rem] p-4 flex flex-col hover:scale-110 transition-all duration-500">
+    <div
+      data-testid="mini-card"
+      className="glassCard w-[10rem] h-[11rem] p-4 flex flex-col hover:scale-110 transition-all duration-500"
+    >
       <p className="text-center">
         {
           new Date(time)
